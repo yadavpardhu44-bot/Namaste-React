@@ -1,10 +1,3 @@
-Notes/ep2-theory.md
-```
-
-Everything is formatted so it will **render nicely on GitHub**.
-
----
-
 # Episode 2 – Theory Notes
 
 ## 1. What is NPM?
