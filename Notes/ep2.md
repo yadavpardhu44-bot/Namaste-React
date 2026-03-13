@@ -2,8 +2,6 @@
 
 ## 1. What is NPM?
 
-NPM stands for **Node Package Manager**.
-
 It is the default package manager for Node.js used to **install, manage, and share JavaScript packages (libraries)**.
 
 Key points:
