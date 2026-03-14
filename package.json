@@ -17,6 +17,8 @@
   "author": "Pardhu Yadav",
   "type": "commonjs",
   "scripts": {
+    "start": "parcel EP_1_INCEPTION/index.html",
+    "build": "parcel build EP_1_INCEPTION/index.html",
     "test": "jest"
   },
   "devDependencies": {
