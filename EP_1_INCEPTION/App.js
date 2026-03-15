@@ -2,11 +2,24 @@ import React from "react";
 import ReactDOM from "react-dom/client"
 
 alert("React is running");
-const jsxheading = (
+
+
+const HeadingComponent = () =>{         //component composition
+    return <div id="container">
+        {/* <Title></Title>
+        <Title />
+        {Title()} */}
+        <h1>
+            Namaste React Using functional component
+        </h1>
+    </div>
+}
+
+const Title = (
 <h1 id="heading" className="jsxheading" tabIndex={5}>
+    <HeadingComponent></HeadingComponent>
     Namaste React using JSX🚀
 </h1>
 );
-console.log(jsxheading);
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(jsxheading);
+root.render(Title);
