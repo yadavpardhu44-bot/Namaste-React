@@ -272,4 +272,21 @@ Benefits:
 * Props pass data between components
 * Config-driven UI makes apps dynamic
 
+/**
+ * Header
+ *  - Logo
+ *  - Nav Items
+ * Body
+ *  - Search
+ *  - Restaurant Container
+ *   - Restaurant Card
+ *     -Img
+ *     -Name of res, star rating, cuisine, delivery time
+ *  - Footer
+ *   - Copy Rights
+ *   - Links
+ *   - Address
+ *   - Contact
+ */
+
 ---
