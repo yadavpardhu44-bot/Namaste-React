@@ -73,3 +73,8 @@
 .reset-btn{
     margin: 10px;
 }
+
+.user-card{
+    padding: 10px;
+    border: 1px solid black;
+}
