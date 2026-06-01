@@ -2,6 +2,7 @@ import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
     const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -13,11 +14,17 @@ const Body = () => {
         fetchData();
     }, [])
     const fetchData = async () => {
-        const data = await fetch("https://proxy.corsfix.com/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=13.08950&lng=80.27390&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+        const data = await fetch("https://namastedev.com/api/v1/listRestaurants");
         const json = await data.json();
         console.log(json);
-        setListOfRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        setFilteredList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setListOfRestaurants(json?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setFilteredList(json?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    }
+    const onlineStatus = useOnlineStatus();
+    if(onlineStatus === false){
+        return (
+            <h1>Looks you'r offline!! Please check your internet connection.</h1>
+        )
     }
     return listOfRestaurants.length===0 ? <Shimmer /> : (
         <div className="body">
@@ -46,7 +53,7 @@ const Body = () => {
             <div className="Res-Container">
                 {
                     filteredList.map((restaurant)=> (
-                        <Link key={restaurant.info.id}><RestaurantCard resData={restaurant}/></Link>
+                        <Link to={"/restaurant/"+restaurant.info.id} key={restaurant.info.id}><RestaurantCard resData={restaurant}/></Link>
                     ))
                 }
             </div>
