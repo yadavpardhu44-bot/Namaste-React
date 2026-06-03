@@ -28,29 +28,32 @@ const Body = () => {
     }
     return listOfRestaurants.length===0 ? <Shimmer /> : (
         <div className="body">
-            <div className="filter">
-                <div className="search">
-                    <input type="text" className="search-box" value={searchText}
+            <div className="filter flex items-center">
+                <div className="search m-4 p-4">
+                    <input type="text" className="search-box border-2" value={searchText}
                     onChange={(e) => {setSearchText(e.target.value)}}/>
-                    <button onClick={() => {
+                    <button className="m-2 p-2 bg-gray-50 rounded-lg" onClick={() => {
                         const filteredList=listOfRestaurants.filter((res) => res.info.name.toLowerCase().includes(searchText.toLowerCase()));
                         setFilteredList(filteredList);
                     }}>search</button>
                 </div>
-                <button className="filter-btn"
-                onClick={() => {
-                    const filteredList = listOfRestaurants.filter((res) => res.info.avgRating > 4.3);
-                    setFilteredList(filteredList);
-                } }
-                >
-                    Top Rated Restaurants
-                </button>
+                <div>
+                    <button className="filter-btn m-2 p-2 bg-gray-50 rounded-lg"
+                    onClick={() => {
+                        const filteredList = listOfRestaurants.filter((res) => res.info.avgRating > 4.3);
+                        setFilteredList(filteredList);
+                    } }
+                    >
+                        Top Rated Restaurants
+                    </button>
 
-                <button className="reset-btn" onClick={() => setFilteredList(listOfRestaurants)}>
-                reset
-                </button>
+                    <button className="reset-btn m-2 p-2 bg-gray-50 rounded-lg" onClick={() => setFilteredList(listOfRestaurants)}>
+                    reset
+                    </button>
+                </div>
+                
             </div>
-            <div className="Res-Container">
+            <div className="Res-Container flex flex-wrap">
                 {
                     filteredList.map((restaurant)=> (
                         <Link to={"/restaurant/"+restaurant.info.id} key={restaurant.info.id}><RestaurantCard resData={restaurant}/></Link>
