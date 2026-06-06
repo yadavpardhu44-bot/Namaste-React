@@ -1,14 +1,16 @@
 import { LOGO_URL } from "../utils/constants";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import Grocery from "./Grocery";
+import UserContext from "../utils/UserContext";
 const Header = () => {
     const [btnReact, setBtnReact] = useState("Log In");
     const onlineStatus=useOnlineStatus();
+    const {loggedInUser} = useContext(UserContext);
     // console.log("Header");
     return (
-    <div className="flex justify-between bg-pink-50 items-center shadow-xl">
+    <div className="flex justify-between xl:bg-pink-50 items-center shadow-xl sm:bg-amber-100 bg-blue-200">
         <div className="logo-container">
             <img className="w-56" src={LOGO_URL}/>
         </div>
@@ -23,6 +25,7 @@ const Header = () => {
                 <button className="login p-4 m-4 bg-gray-50 rounded-xl" onClick={() => {
                     btnReact==="Log In" ? setBtnReact("Log Out") : setBtnReact("Log In");
                 }}>{btnReact}</button>
+                <li className="p-4 m-4">{loggedInUser}</li>
             </ul>
         </div>
     </div>
