@@ -1,4 +1,4 @@
-import RestaurantCard, {PromotedRestaurantCard, PromotedRestaurantCard} from "./RestaurantCard";
+import RestaurantCard, {PromotedRestaurantCard} from "./RestaurantCard";
 import { useContext, useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -10,7 +10,7 @@ const Body = () => {
     const [listOfRestaurants, setListOfRestaurants] = useState([]);
     const [searchText,setSearchText] = useState("");
     const [filteredList,setFilteredList] = useState([]);
-    console.log("headerrr", listOfRestaurants);
+    //console.log("headerrr", listOfRestaurants);
     useEffect(() =>
     {
         fetchData();
@@ -18,7 +18,7 @@ const Body = () => {
     const fetchData = async () => {
         const data = await fetch("https://namastedev.com/api/v1/listRestaurants");
         const json = await data.json();
-        console.log(json);
+        //console.log(json);
         setListOfRestaurants(json?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setFilteredList(json?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
@@ -33,7 +33,7 @@ const Body = () => {
         <div className="body">
             <div className="filter flex items-center">
                 <div className="search m-4 p-4">
-                    <input type="text" className="search-box border-2" value={searchText}
+                    <input type="text" data-testid="searchInput" className="search-box border-2" value={searchText}
                     onChange={(e) => {setSearchText(e.target.value)}}/>
                     <button className="m-2 p-2 bg-gray-50 rounded-lg" onClick={() => {
                         const filteredList=listOfRestaurants.filter((res) => res.info.name.toLowerCase().includes(searchText.toLowerCase()));

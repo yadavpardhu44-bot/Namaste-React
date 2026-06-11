@@ -7,7 +7,7 @@ const RestaurantCard = (props) => {
     const {name,cuisines,avgRating,costForTwo,sla} = resData?.info
     const {loggedInUser} = useContext(UserContext);
     return(
-        <div className="res-card m-4 p-4 w-54 rounded-2xl bg-gray-100 hover:bg-gray-200">
+        <div data-testid="resCard" className="res-card m-4 p-4 w-54 rounded-2xl bg-gray-100 hover:bg-gray-200">
             <img className="res rounded-2xl" alt="res-logo" src={CDN_URL+resData.info.cloudinaryImageId}/>
             <h3>{name}</h3>
             <h4>{cuisines.join(", ")}</h4>
